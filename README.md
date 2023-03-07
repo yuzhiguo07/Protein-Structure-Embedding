@@ -1,5 +1,5 @@
 
-# tfold-se3 with loc finetuning
+# Self-Supervised Pre-training for Protein Embeddings Using Tertiary Structures
 
 ## requirment
 ```
