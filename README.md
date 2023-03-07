@@ -45,6 +45,8 @@ CUDA_VISIBLE_DEVICES=0 python main.py --config_fname config.yaml
 
  -->
 
+### inputs/outputs examples
+pdb/task01/
 
 ## sample feature
 
