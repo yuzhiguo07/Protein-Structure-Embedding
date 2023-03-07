@@ -80,3 +80,7 @@ where C = 64 in this model.
 Notes:
 After severial experiments, we found that the use of `inter_residue_feat` (L * L * C) has the best effect, and the performance is gradually weakened after 1D and 2D pooling. Therefore, we suggest users to use our structrue embedding in 2D downstream networks, such as 2D cnn or graph neural network. 
 
+
+## Citation
+Guo, Yuzhi, Jiaxiang Wu, Hehuan Ma, and Junzhou Huang. "Self-supervised pre-training for protein embeddings using tertiary structures." In Proceedings of the AAAI Conference on Artificial Intelligence, vol. 36, no. 6, pp. 6801-6809. 2022.
+
