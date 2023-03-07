@@ -1,0 +1,189 @@
+# === Paths - RCSB (chain-level) ===
+
+# Directory path to RCSB-PDB's FASTA files
+fas_dpath_rcsb: /mnt/SSD3/protein_proj/anti-project/tFold-SE3-loc/pdb/task01/fasta.files
+# Directory path to RCSB-PDB's native PDB files
+pdb_dpath_rcsb: /mnt/SSD3/protein_proj/anti-project/tFold-SE3-loc/pdb/task01/pdb.files.native
+# Directory path to RCSB-PDB's HDF5 files
+hdf_dpath_rcsb: /mnt/SSD3/protein_proj/anti-project/tFold-SE3-loc/pdb/task01/hdf5.files
+# Directory path to RCSB-PDB's NPZ files (distance/orientation predictions)
+npz_dpath_rcsb: /mnt/SSD3/protein_proj/anti-project/tFold-SE3-loc/pdb/task01/npz.files
+# Path to protein IDs in the RCSB-PDB training subset
+# pid_fpath_rcsb_trn: /mnt/SSD3/protein_proj/anti-project/tFold-SE3-loc/pdb/task01/loc_chain_ids_trn_debug.txt
+pid_fpath_rcsb_trn: /mnt/SSD3/protein_proj/anti-project/tFold-SE3-loc/pdb/task01/loc_chain_ids_trn.txt
+# Path to protein IDs in the RCSB-PDB validation subset
+# pid_fpath_rcsb_val: /mnt/SSD3/protein_proj/anti-project/tFold-SE3-loc/pdb/task01/loc_chain_ids_val_debug.txt
+pid_fpath_rcsb_val: /mnt/SSD3/protein_proj/anti-project/tFold-SE3-loc/pdb/task01/loc_chain_ids_val.txt
+# Path to protein IDs in the RCSB-PDB test subset
+# pid_fpath_rcsb_tst: /mnt/SSD3/protein_proj/anti-project/tFold-SE3-loc/pdb/task01/loc_chain_ids_tst_debug.txt
+pid_fpath_rcsb_tst: /mnt/SSD3/protein_proj/anti-project/tFold-SE3-loc/pdb/task01/chain_id.txt
+# Directory path to save feat files
+save_feat_dpath_rcsb: /mnt/SSD3/protein_proj/anti-project/tFold-SE3-loc/pdb/task01/feat_dict.files
+
+# === Paths - Common ===
+
+# Directory path to model files
+# mdl_dpath: /mnt/smile1/pdb/RCSB-PDB/models/try-bc30
+# mdl_dpath: /mnt/smile1/pdb/RCSB-PDB-100/models/5-16-22-bc100
+mdl_dpath: /mnt/SSD3/protein_proj/anti-project/tFold-SE3-loc/pdb/task01/models/sample
+
+# === Execution Mode ===
+
+# Execution mode (choices: 'train' OR 'sample' Or 'finetune')
+exec_mode: sample_feat
+
+# === Features ===
+
+# Number of dimensions for distance encoding tensors
+n_dims_denc: 61
+# Number of dimensions for one-hot encodings of amino-acids
+n_dims_onht: 20
+# Number of dimensions for positional encodings
+n_dims_penc: 24
+# Number of dimensions for inter-residue distance predictions
+n_dims_dist: 37
+# Number of dimensions for inter-residue orientation predictions
+n_dims_angl: 63
+# Whether to use one-hot encodings of amino-acids as conditional inputs
+use_onht: True
+# Whether to use positional encodings as conditional inputs
+use_penc: True
+# Whether to use inter-residue distance predictions as conditional inputs
+use_dist: False
+# Whether to use inter-residue orientation predictions as conditional inputs
+use_angl: False
+# Distance encoding method (choices: 'prob' OR 'sigm')
+denc_mthd: prob
+# Filter method for low-confidence predictions (choices: 'none' OR 'pcut' OR 'pcnt')
+filt_mthd: none
+# PCUT thresholds for filtering-out low-confidence predictions
+pcut_vals: [0.05, 0.15, 0.25, 0.35, 0.45]
+# PCNT thresholds for filtering-out low-confidence predictions
+pcnt_vals: [0.05, 0.15, 0.25, 0.35, 0.45]
+
+# === Finetune Features ===
+pred_hid: 32
+pred_cls: 10
+
+# === Random Noise ===
+
+# Random noise's maximal standard deviation
+noise_std_max: 10.0
+# Random noise's minimal standard deviation
+noise_std_min: 0.01
+# Number of random noise's standard deviation levels
+n_noise_levls: 61
+
+# === Model - Base ===
+
+# Target model's update coeffcient, as in the exponential moving average (EMA)
+ema_alpha: 0.999
+# Model class (choices: 'CondResnet' OR 'SE3Trans' OR 'SE3TransSep')
+model_class: CondResnet
+
+# === Model - CondResnet ===
+
+# Number of residual blocks
+cr_n_blks: 32
+# Number of hidden feature maps' channels
+cr_n_chns_hid: 64
+# Residual block's type (choices: 'basic' OR 'bottleneck')
+cr_blk_type: bottleneck
+# Normalization layer's type (choices: '(cond_)batch_norm' OR '(cond_)instance_norm(_plus)')
+cr_norm_lyr_type: cond_batch_norm
+# Whether to insert a criss-cross attention layer at the end of each dilation loop
+cr_use_cc_attn: False
+# Crop size of sliding windows
+crop_size: 32
+# Crop mode (choices: 'none' OR 'single' OR 'multi')
+crop_mode: none
+
+# === Model - SE3Trans
+
+# Number of hidden node embeddings' dimensions
+st_n_dims_hid: 16
+# Number of output node predictions' dimensions
+st_n_dims_out: 16
+# Number of SE3Trans model's residual blocks
+st_n_blks: 4
+# Number of SE3Trans model's feature degree (exclusive)
+st_n_dgrs: 2
+# SE3Trans model's division factor
+st_n_dfctr: 4
+# Number of heads in SE3Trans model's multi-headed attention
+st_n_heads: 1
+# Whether to use conditional normalization layers in the SE3Trans model
+st_cond_norm: True
+# Distance threshold for building edges
+dist_thres: 16.0
+# Maximal number of edges in a single DGL graph (-1: unlimited)
+n_edges_max: 16000
+# Number of edges per node threshold for building edges
+nedg_thres: 32
+
+# === Model - SE3TransSep
+
+# List of residual separation for building edges
+sep_list: [1, 2, 4, 8]
+
+# === Dataset ===
+
+# Data source (choices: 'cath' OR 'rcsb')
+data_source: rcsb
+# Input format (choices: '2d' OR '3d' OR '3ds')
+input_frmt: 2d
+# Batch size for the training subset
+batch_size_trn: 1
+# Batch size for the validation subset
+batch_size_val: 1
+# Batch size for the test subset
+batch_size_tst: 1
+# Minimal FASTA sequence length (-1: unlimited)
+seq_len_min: -1
+# Maximal FASTA sequence length (-1: unlimited)
+seq_len_max: 700
+
+# === Training ===
+
+# Learning rate scheduler (choices: 'const' / 'cosine' / 'mstep')
+lr_scheduler: const
+# Initial learning rate
+lr_init: 1.0e-2
+# Weight decaying factor / L2-regularization
+weight_decay: 0.0
+# List of epoch indices for the multi-step LR scheduler
+lr_mlstn: [25, 38]
+# Multiplicative factor of learning rate decay for the multi-step LR scheduler
+lr_gamma: 0.1
+# Minimal learning rate for the cosine annealing LR scheduler
+lr_min: 1.0e-5
+# Number of epochs for model training
+n_epochs: 50
+
+# === Sampling ===
+
+# Number of iterations for sampling via Langevin dynamics
+n_iters_smp: 64
+# Initial step size for sampling via Langevin dynamics
+step_size_init: 1.0e-5
+# Multiplier of random noise in Langevin dynamics
+noise_mult: 0.10
+# Whether to evaluate intermediate results at the end of each random noise level
+eval_per_levl: False
+# Full path to the checkpoint file (higher priority)
+pth_fpath: /PATH_TO_THE_CHECKPOINT_FILE
+# Name of the checkpoint file (will be concatenated with <mdl_dpath>; lower priority)
+pth_fname: model_trgt_opt.pth
+
+# === Miscellaneous ===
+
+# Number of parallel workers in the data loader
+n_workers: 8
+# Number of iterations for progress reporting
+n_iters_rep: 512
+# Whether to write models & refined structures into Ceph
+write_to_ceph: True
+# Enable visualization for generating arXiv submission's figures
+enbl_arxiv_visual: False
+# Verbose level (choices: 'DEBUG' / 'INFO' / 'WARNING' / 'ERROR')
+verbose_level: INFO

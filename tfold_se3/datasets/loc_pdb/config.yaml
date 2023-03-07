@@ -1,0 +1,34 @@
+# === File Paths ===
+
+# Directory path to PDB files in the RCSB-PDB database
+# pdb_dpath_raw: /home/xiaozhi/pdb/RCSB-PDB-20210105
+pdb_dpath_raw: /mnt/SSD3/protein_proj/pdb/Deeploc_c2_10/v_pdb
+
+# Directory path to BC-X sequence clustering results in the RCSB-PDB database
+bcx_dpath: /mnt/SSD3/protein_proj/pdb/Deeploc_c2_10/sequence-clusters
+# Directory path to HDF5 files
+hdf_dpath: /mnt/SSD3/protein_proj/pdb/Deeploc_c2_10/hdf5.files
+# Directory path to LOG files (for PDB file parsing)
+log_dpath: /mnt/SSD3/protein_proj/pdb/Deeploc_c2_10/log.files
+# Directory path to PDB files
+fas_dpath: /mnt/SSD3/protein_proj/pdb/Deeploc_c2_10/fasta.files
+# Directory path to native PDB files
+pdb_dpath_natv: /mnt/SSD3/protein_proj/pdb/Deeploc_c2_10/pdb.files.native
+# File path to label csv files
+csv_fpath: /mnt/SSD3/protein_proj/pdb/Deeploc_c2_10/loc_all_c2_10.csv
+
+fas_ddpath: /mnt/SSD3/protein_proj/pdb/Deeploc_c2_10/fasta
+
+# === Dataset ===
+
+# BC-X's sequence identity threshold (choices: 30, 40, 50, 70, 90, 95, and 100)
+bcx_thres: 0
+# Maximal number of BC-X clusters (-1: unlimited)
+n_clsts_max: -1
+# Number of PDB-chain entries per HDF5 file
+n_chains_per_file: 256
+
+# === Miscellaneous ===
+
+# Verbose level (choices: 'DEBUG' / 'INFO' / 'WARNING' / 'ERROR')
+verbose_level: INFO
