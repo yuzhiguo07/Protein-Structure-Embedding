@@ -17,33 +17,7 @@ pip install pyyaml
 pip install matplotlib
 ```
 
-## PDB data pre-processing
-```
-export PYTHONPATH="/path/to/tFold-SE3-loc"
-export NB_THREADS=30
-cd tfold_se3/datasets/rcsb_pdb
-```
-modify config.yaml: 
-`pdb_dpath_raw`: the dpath contains all the pdb files 
-`bcx_dpath`: the dpath contains a `bc-0.out` file including all pdbid
-`hdf_dpath`: saving dpath for hdf5 files
-`log_dpath`: log dpath
-`fas_dpath`: dpath for saving fasta files, no use in this version.
-`pdb_dpath_natv`: no use in this version.
-```
-python build_dataset_sample.py
-```
 
-<!-- ## pre-training
-```
-cd tfold_se3/experiments/ebm_struct
-modify config.yaml 
-CUDA_VISIBLE_DEVICES=0 python main.py --config_fname config.yaml
-
-``` -->
-<!-- ## fine-tunning
-
- -->
 
 ### inputs/outputs examples
 pdb/task01/
@@ -51,6 +25,7 @@ pdb/task01/
 ## sample feature
 
 ```
+export PYTHONPATH="/path/to/tFold-SE3-loc"
 cd ../..
 cd experiments/ebm_struct/
 modify config_sample_feat.yaml
