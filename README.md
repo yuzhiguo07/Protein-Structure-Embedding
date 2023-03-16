@@ -37,7 +37,7 @@ for `config_sample_feat.yaml`:
 
 other hyper-paremeters are not using in this sampling version
 
-Since the original model was trained during the internship, the model provided here (dpath: `tFold-SE3-loc/pdb/task01/models/sample`) is Not one of the models introduced in the paper. But it may achieve similar results.
+The model provided here (dpath: `tFold-SE3-loc/pdb/task01/models/sample`) is not one of the models introduced in the paper. But it may achieve similar results.
 
 ```
 CUDA_VISIBLE_DEVICES=0 python main.py --config_fname config_sample_feat.yaml
