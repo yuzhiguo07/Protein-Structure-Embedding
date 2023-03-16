@@ -25,7 +25,7 @@ from tfold_se3.utils.prot_utils import parse_fas_file
 from tfold_se3.utils.prot_utils import parse_pdb_file
 from tfold_se3.utils.prot_utils import export_fas_file
 from tfold_se3.utils.prot_utils import export_pdb_file
-from tfold_se3.utils.se3_utils import get_basis_and_radial
+# from tfold_se3.utils.se3_utils import get_basis_and_radial
 from tfold_se3.utils.se3_utils import check_se3_equiv
 from tfold_se3.utils.torch_utils import get_tensor_size
 from tfold_se3.utils.torch_utils import check_tensor_size
@@ -58,7 +58,7 @@ __all__ = [
     'parse_pdb_file',
     'export_fas_file',
     'export_pdb_file',
-    'get_basis_and_radial',
+#     'get_basis_and_radial',
     'check_se3_equiv',
     'get_tensor_size',
     'check_tensor_size',
