@@ -34,6 +34,7 @@ for `config_sample_feat.yaml`:
 `pid_fpath_rcsb_tst`: .txt fpath including all pdbid. (same with `bc-0.out` file)
 `save_feat_dpath_rcsb`: save dpath for the generated features
 `mdl_dpath`: model dpath
+
 other hyper-paremeters are not using in this sampling version
 
 Since the original model was trained during the internship, the model provided here (dpath: `tFold-SE3-loc/pdb/task01/models/sample`) is Not one of the models introduced in the paper. But it may achieve similar results.
