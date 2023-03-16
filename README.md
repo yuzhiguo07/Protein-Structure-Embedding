@@ -20,7 +20,7 @@ pip install matplotlib
 
 
 ### inputs/outputs examples
-pdb/task01/
+[pdb/task01/hdf5.files ](https://github.com/yuzhiguo07/Protein-Structure-Embedding/tree/main/pdb/task01/hdf5.files)
 
 ## sample feature
 
